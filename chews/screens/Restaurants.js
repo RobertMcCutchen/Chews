@@ -13,6 +13,14 @@ import Colors from '../constants/Colors';
 import CuisineGridTile from '../components/CuisineGridTile';
 
 const Restaurants = props => {
+
+  const latitude = props.navigation.getParam('lat');
+  const longitude = props.navigation.getParam('lng');
+  
+  console.log('success!')
+  console.log(latitude)
+  console.log(longitude)
+
   const renderGridItem = itemData => {
     return(
       <CuisineGridTile 
@@ -24,6 +32,8 @@ const Restaurants = props => {
           params: {
             cuisineId: itemData.item.id,
             cuisineTitle: itemData.item.title,
+            lat: latitude,
+            lng: longitude
           }
         })
       }}

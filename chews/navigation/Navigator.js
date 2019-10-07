@@ -7,6 +7,7 @@ import AddressSelect from '../screens/AddressSelect';
 import ChosenCuisine from '../screens/ChosenCuisine';
 import Restaurants from '../screens/Restaurants';
 import RestaurantDetails from '../screens/RestaurantDetails';
+import MapScreen from '../screens/MapScreen'
 
 const Navigator = createStackNavigator({
     Signup: Signup,
@@ -15,6 +16,7 @@ const Navigator = createStackNavigator({
     ChosenCuisine: ChosenCuisine,
     Restaurants: Restaurants,
     RestaurantDetails: RestaurantDetails,
+    Map: MapScreen,
 });
 
 export default createAppContainer(Navigator);

@@ -16,10 +16,22 @@ const AddressSelect = props => {
   const [yourAddress, setYourAddress] = useState('');
   const [yourCity, setYourCity] = useState('');
   const [yourState, setYourState] = useState('');
+  
+  const [lat, setLat] = useState('');
+  const [lng, setLng] = useState('')
+ 
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
+  // const getLocation = () => {
+  //   dispatchLocation()
+  //   console.log(coord)
+  //   props.navigation.replace({
+  //     routeName: 'Restaurants', 
+  //     params: {coord: coord}
+  //   })
+  // }
 
-  const getLocation = () => {
+  const dispatchLocation = () => {
     yourAddress.trim().replace(' ', '+');
     yourCity.trim().replace(' ', '+');
     yourState.trim().toUpperCase();
@@ -32,17 +44,16 @@ const AddressSelect = props => {
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            let coord = {
-              lat: data.results[0].geometry.location.lat, 
-              lng: data.results[0].geometry.location.lng
-              }
-            console.log(coord)
-            dispatch(addPlace(coord))
-            if(coord) {
-              props.navigation.replace('Restaurants')
-            } 
-          }
-    )
+              const latitude = data.results[0].geometry.location.lat;
+              setLat(latitude)
+              const longitude = data.results[0].geometry.location.lng;
+              setLng(longitude)
+              props.navigation.replace({
+                routeName: 'Restaurants', 
+                params: {lat: latitude, lng: longitude}
+            })
+        })
+     
     )
   }  
 
@@ -79,7 +90,7 @@ const AddressSelect = props => {
       
       <Button 
         title="Find Restaurants!"
-        onPress={getLocation}
+        onPress={dispatchLocation}
       />
     </View>
   );

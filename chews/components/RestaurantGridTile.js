@@ -27,7 +27,7 @@ const RestaurantGridTile = props => {
                         style={styles.cuisineImage}
                     >
                         <View style={styles.titleContainer}>
-                            <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
+                            <Text style={styles.title} numberOfLines={2}>{props.title}</Text>
                         </View>
                     </ImageBackground>
                 </View>
