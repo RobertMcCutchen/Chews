@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack'
-import { createAppContainer} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 
 import Signup from '../screens/Signup';
 import Login from '../screens/Login';

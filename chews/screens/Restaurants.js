@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   FlatList, 
   StyleSheet, 
@@ -12,10 +12,9 @@ import { CATEGORIES } from '../categoryData/data';
 import Colors from '../constants/Colors';
 import CuisineGridTile from '../components/CuisineGridTile';
 
-
 const Restaurants = props => {
   const renderGridItem = itemData => {
-    return (
+    return(
       <CuisineGridTile 
       title={itemData.item.title} 
       imageURL={itemData.item.imageURL}
@@ -23,21 +22,23 @@ const Restaurants = props => {
         props.navigation.navigate({
           routeName: 'ChosenCuisine', 
           params: {
-            cuisineId: itemData.item.id
+            cuisineId: itemData.item.id,
+            cuisineTitle: itemData.item.title,
           }
         })
       }}
       />
     )
   }
+ 
   return (
-      <View>
+      <View style={styles.container}>
         <Header title={'Chews'} />
       <FlatList 
         keyExtractor={(item, index) => item.id}
         data={CATEGORIES}
         renderItem={renderGridItem}
-        numColumns={3}
+        numColumns={1}
       />
       </View>
   );
@@ -52,11 +53,9 @@ Restaurants.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: {
+    paddingBottom: 50,
+  }
 });
 
 export default Restaurants;

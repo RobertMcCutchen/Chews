@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import Navigator from './navigation/Navigator'
+import Navigator from './navigation/Navigator';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import Reducer from './store/places-reducer';
 
+const store = createStore(Reducer, composeWithDevTools());
 
 const fetchFonts = () => {
   return Font-Font.loadAsync({
@@ -12,20 +17,15 @@ const fetchFonts = () => {
   })
 }
 
-export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(false);
+fetchFonts()
 
-  if(!fontLoaded) {
-    return (
-      <AppLoading 
-      startAsync={fetchFonts} 
-      onFinish={() => setFontLoaded(true)} />
-    )
-  }
+export default function App() {
 
   return (
-    <Navigator style={StyleSheet.screen}/>
-  );
+    <Provider store={store}>
+      <Navigator style={styles.screen}/>
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({

@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from '../components/Header';
 
-export default function RestaurantDetails() {
+const RestaurantDetails = () => {
   return (
     <View style={styles.screen}>
-      <Header title={'Restaurant Detail'}/>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Header title={'Chews'}/>
+      <Text>Open up App.js to start working on your </Text>
     </View>
   );
 }
@@ -14,3 +14,5 @@ export default function RestaurantDetails() {
 const styles = StyleSheet.create({
 
 });
+
+export default RestaurantDetails;
