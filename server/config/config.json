@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "hajquhrs",
+    "password": "pJ2Y9-ziVBP_7uH-1uZ69JHltF1RwI6H",
+    "database": "hajquhrs",
+    "host": "salt.db.elephantsql.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "hajquhrs",
+    "password": "pJ2Y9-ziVBP_7uH-1uZ69JHltF1RwI6H",
+    "database": "hajquhrs",
+    "host": "salt.db.elephantsql.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "hajquhrs",
+    "password": "pJ2Y9-ziVBP_7uH-1uZ69JHltF1RwI6H",
+    "database": "hajquhrs",
+    "host": "salt.db.elephantsql.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}

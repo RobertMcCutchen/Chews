@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import { API_KEY } from 'react-native-dotenv'
 import { useDispatch } from 'react-redux';
 import { addPlace } from '../store/places-actions';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const AddressSelect = props => {
   const [yourAddress, setYourAddress] = useState('');
@@ -36,7 +37,7 @@ const AddressSelect = props => {
     yourCity.trim().replace(' ', '+');
     yourState.trim().toUpperCase();
     url = `https://maps.googleapis.com/maps/api/geocode/json?address=${yourAddress},
-    +${yourCity},+${yourState}&key=${API_KEY}`;
+    +${yourCity},+${yourState}&key=AIzaSyD5Hk4s6zbTgXLPC-UYMLRmLFrxqJy0MGY`;
 
     console.log(url)
 
@@ -58,6 +59,7 @@ const AddressSelect = props => {
   }  
 
   return (
+    <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
       <Header title={'Chews'}/>
       <View style={styles.locationContainer}>
@@ -93,6 +95,7 @@ const AddressSelect = props => {
         onPress={dispatchLocation}
       />
     </View>
+    </LinearGradient>
   );
 }
 
@@ -114,8 +117,8 @@ const styles = StyleSheet.create({
   locationContainer: {
     flex: 1,
     width: '80%',
-    marginVertical: 150,
-    borderRadius: 10,
+    marginVertical: 140,
+    borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -139,6 +142,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 25,
+    color: 'indigo',
+    font: 'open-sans-bold',
   },
   cityStateContainer: {
     alignItems: 'center',
@@ -153,6 +158,10 @@ const styles = StyleSheet.create({
   },
   stateInput: {
     width: '24%',
+  },
+  gradient: {
+    width: '100%',
+    height: '100%'
   }
 });
 

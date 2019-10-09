@@ -22,9 +22,9 @@ fetchFonts()
 export default function App() {
 
   return (
-    <Provider store={store}>
-      <Navigator style={styles.screen}/>
-    </Provider>
+      <Provider store={store}>
+          <Navigator style={styles.screen}/>
+      </Provider>
   )
 }
 

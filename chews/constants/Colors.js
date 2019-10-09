@@ -1,6 +1,6 @@
 export default Colors = {
-    color1: '#f9d5bb',
-    color2: '#f66767',
-    color3: '#d35656',
-    color4: '#3c3d47',
+    color1: 'white',
+    color2: 'aquamarine',
+    color3: 'violet',
+    color4: 'orange',
 }

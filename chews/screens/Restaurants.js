@@ -11,16 +11,12 @@ import Header from '../components/Header';
 import { CATEGORIES } from '../categoryData/data';
 import Colors from '../constants/Colors';
 import CuisineGridTile from '../components/CuisineGridTile';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Restaurants = props => {
-
   const latitude = props.navigation.getParam('lat');
   const longitude = props.navigation.getParam('lng');
   
-  console.log('success!')
-  console.log(latitude)
-  console.log(longitude)
-
   const renderGridItem = itemData => {
     return(
       <CuisineGridTile 
@@ -42,6 +38,7 @@ const Restaurants = props => {
   }
  
   return (
+      <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
       <View style={styles.container}>
         <Header title={'Chews'} />
       <FlatList 
@@ -51,6 +48,7 @@ const Restaurants = props => {
         numColumns={1}
       />
       </View>
+      </LinearGradient>
   );
 }
 
@@ -65,6 +63,10 @@ Restaurants.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 50,
+  },
+  gradient: {
+    width: '100%',
+    height: '100%'
   }
 });
 

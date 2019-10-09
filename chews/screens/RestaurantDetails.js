@@ -48,6 +48,14 @@ const RestaurantDetails = props => {
   );
 }
 
+RestaurantDetails.navigationOptions = {
+  headerTitle: 'Restaurant Info',
+  headerStyle: {
+    backgroundColor: Platform.OS === 'android' ? Colors.color3 : Colors.color1
+  },
+  headerTintColor: Platform.OS === 'android' ? Colors.color1 : Colors.color3
+};
+
 const styles = StyleSheet.create({
   mapPreview: {
     marginBottom: 10,

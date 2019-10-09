@@ -19,6 +19,14 @@ const MapScreen = props => {
     </MapView>
 };
 
+MapScreen.navigationOptions = {
+    headerTitle: 'Map',
+    headerStyle: {
+      backgroundColor: Platform.OS === 'android' ? Colors.color3 : Colors.color1
+    },
+    headerTintColor: Platform.OS === 'android' ? Colors.color1 : Colors.color3
+  };
+
 const styles= StyleSheet.create({
     map: {
         flex: 1

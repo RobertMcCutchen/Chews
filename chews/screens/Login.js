@@ -9,26 +9,44 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../constants/Colors';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Login = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
   return (
+    <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
       <Header />
       <View style={styles.inputContainer}>
         <View style={styles.anInput}>
           <Text style={styles.label}>Username</Text>
           <TextInput
+            id="username"
+            label="Username"
             style={styles.input}
+            required
+            autoCapitalize="none"
+            keyboardType="default"
+            errorText="Please enter a valid username."
+            initialValue=""
             onChangeText={text => setUsername(text)}
           />
         </View>
         <View style={styles.anInput}>
           <Text style={styles.label}>Password</Text>
           <TextInput
+            id="password"
+            label="Password"
             style={styles.input}
+            secureTextEntry
+            required
+            minLength={5}
+            autoCapitalize="none"
+            keyboardType="default"
+            errorText="Please enter a valid password."
+            initialValue=""
             onChangeText={text => setPassword(text)}
           />
         </View>
@@ -47,6 +65,7 @@ const Login = props => {
         }}
       />
     </View>
+    </LinearGradient>
   );
 }
 
@@ -69,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '80%',
     marginVertical: 125,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -93,6 +112,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 25,
+    color: "indigo",
+  },
+  gradient: {
+    width: '100%',
+    height: '100%'
   }
 });
 

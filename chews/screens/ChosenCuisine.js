@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
     StyleSheet, 
-    Text, 
     View,
     Platform,
     FlatList,
@@ -9,33 +8,18 @@ import {
 import Header from '../components/Header';
 import { CATEGORIES } from '../categoryData/data';
 import Colors from '../constants/Colors';
-import { YELP_API_KEY } from 'react-native-dotenv';
+import { API_KEY2 } from 'react-native-dotenv';
 import RestaurantGridTile from '../components/RestaurantGridTile';
-import { useSelector } from 'react-redux';
-import {connect} from 'react-redux'
+import { LinearGradient } from 'expo-linear-gradient';
 
 const ChosenCuisine = props => {
     const [restaurantData, setRestaurantData] = useState([]);
-    // const storedCoords = useSelector(state => state.places)
-    // console.log(storedCoords)
-
-    // const mapStateToProps = (state) => {
-    //     const coords = state.get('places')
-    //     console.log(coords)
-    //     return {
-    //       coords
-    //     }
-        
-    // }
     
     useEffect(() => {
     const cTitle = props.navigation.getParam('cuisineTitle'); 
     const latitude = props.navigation.getParam('lat');
     const longitude = props.navigation.getParam('lng');
   
-    console.log('success!')
-    console.log(latitude)
-    console.log(longitude)
     let url = `https://api.yelp.com/v3/businesses/search?term=${cTitle}&latitude=${latitude}&longitude=${longitude}`
     console.log(url)
     var data = null;
@@ -63,8 +47,6 @@ const ChosenCuisine = props => {
             imageURL={itemData.item.image_url}
             id={itemData.item.id}
             onSelect={() => {
-                console.log(itemData.item.name)
-                console.log(itemData.item.id)
                 props.navigation.navigate({
                     routeName: 'RestaurantDetails', 
                     params: {
@@ -76,6 +58,7 @@ const ChosenCuisine = props => {
     }
 
     return (
+        <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
         <View style={styles.screen}>
             <Header title={'Chews'}/>
             <FlatList 
@@ -85,6 +68,7 @@ const ChosenCuisine = props => {
                 numColumns={1}
             />
         </View>
+        </LinearGradient>
     );
 }
 
@@ -101,7 +85,10 @@ ChosenCuisine.navigationOptions = (navigationData) => {
 };
 
 const styles = StyleSheet.create({
-
+    gradient: {
+        width: '100%',
+        height: '100%'
+    }
 });
 
 // export default connect(mapStateToProps)(ChosenCuisine);

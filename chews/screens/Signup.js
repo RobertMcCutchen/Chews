@@ -9,13 +9,14 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../constants/Colors';
-import { setLightEstimationEnabled } from 'expo/build/AR';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Signup = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   return (
+    <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
       <Header />
       <View style={styles.inputContainer}>
@@ -43,6 +44,7 @@ const Signup = props => {
         }}
       />
     </View>
+    </LinearGradient>
   );
 }
 
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '80%',
     marginVertical: 125,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -89,6 +91,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 25,
+    color: 'indigo',
+  },
+  gradient: {
+    width: '100%',
+    height: '100%'
   }
 });
 

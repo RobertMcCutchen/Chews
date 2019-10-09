@@ -3,7 +3,7 @@ import Category from '../models/category';
 export const CATEGORIES = [
     new Category('c1', 'Barbeque', 'http://i0.wp.com/media04.stadtanzeiger-ortenau.de/article/2018/08/03/3/20763_XXL.jpg?strip=all'),
     new Category('c2', 'Burgers', 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg'),
-    new Category('c3', 'Cafes', 'https://i.pinimg.com/originals/0a/50/f5/0a50f5117d7905e96f5520bc4f8bb82f.jpg'),
+    new Category('c3', 'Cafés', 'https://i.pinimg.com/originals/0a/50/f5/0a50f5117d7905e96f5520bc4f8bb82f.jpg'),
     new Category('c4', 'Chinese', 'https://www.pophotelfoz.com.br/img/upload/1109192707-noodles-4386591-1920.jpg?_ignore=1568212019152'),
     new Category('c5', 'Delis', 'http://res.freestockphotos.biz/pictures/17/17140-a-picture-of-deli-sandwiches-pv.jpg'),
     new Category('c6', 'Diners', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Metro_Diner_Cafe_Interior.jpg'),

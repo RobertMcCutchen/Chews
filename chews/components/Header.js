@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     headerText: {
-        color: Colors.color4,
+        color: 'indigo',
         fontSize: 36,
+        font: 'open-sans-bold',
     },
 })
 
