@@ -91,6 +91,7 @@ const AddressSelect = props => {
       </View>
       
       <Button 
+        style={styles.button} 
         title="Find Restaurants!"
         onPress={dispatchLocation}
       />
@@ -117,7 +118,8 @@ const styles = StyleSheet.create({
   locationContainer: {
     flex: 1,
     width: '80%',
-    marginVertical: 140,
+    marginTop: 40,
+    marginBottom: 240,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
@@ -162,6 +164,9 @@ const styles = StyleSheet.create({
   gradient: {
     width: '100%',
     height: '100%'
+  },
+  button: {
+    fontSize: 30,
   }
 });
 

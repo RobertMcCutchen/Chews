@@ -16,10 +16,6 @@ const MapPreview = props => {
     return (
         <TouchableOpacity onPress={props.onPress} style={{...styles.mapPreview, ...props.style}}>
             <Image style={styles.mapImage} source={{uri: imagePreviewUrl}}/>
-            
-            {/* {props.latitude && props.longitude ? (
-                <Image style={styles.mapImage} source={{uri: imagePreviewUrl}}/> 
-            ) : (props.children)} */}
         </TouchableOpacity>
     )
 }
@@ -30,7 +26,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     mapImage: {
-        width: '100%',
+        width: '90%',
         height: '100%',
     },
 })

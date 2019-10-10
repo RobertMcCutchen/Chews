@@ -37,7 +37,7 @@ const Signup = props => {
       </View>
       <Button title="Sign me up!"/>
       <Text>Already signed up?</Text>
-      <Button 
+      <Button
         title="Login"
         onPress={() => {
           props.navigation.replace('Login')
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   gradient: {
     width: '100%',
     height: '100%'
-  }
+  },
 });
 
 export default Signup;

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import MapPreview from '../components/MapPreview';
 import Colors from '../constants/Colors';
 import ActivityIndicator from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const RestaurantDetails = props => {
@@ -20,16 +21,19 @@ const RestaurantDetails = props => {
   };
 
   return (
+    <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
-      <Header title={'Chews'}/>
-      <Text>Name: {data.name}</Text>
-      <Text>Phone #: {data.phone}</Text>
-      <Text>Price: {data.price}</Text>
-      <Text>Stars: {data.rating}</Text>
-      <Text>Website: {data.url}</Text>
-      <Text>Category: {data.categories[0].title}</Text>
-      <Text>Ditance: {distance} miles</Text>
-      <Text>Address: {data.location.display_address}</Text>
+      <Header/>
+      <View style={styles.restaurantInfo}>
+        <Text style={styles.detail}>Name: {data.name}</Text>
+        <Text style={styles.detail}>Phone #: {data.phone}</Text>
+        <Text style={styles.detail}>Price: {data.price}</Text>
+        <Text style={styles.detail}>Stars: {data.rating}</Text>
+        {/* <Text style={styles.detail}>Website: {data.url}</Text> */}
+        <Text style={styles.detail}>Category: {data.categories[0].title}</Text>
+        <Text style={styles.detail}>Ditance: {distance} miles</Text>
+        <Text style={styles.detail}>Address: {data.location.display_address}</Text>
+      </View>
       <MapPreview 
         style={styles.mapPreview} 
         latitude={data.coordinates.latitude} 
@@ -38,13 +42,14 @@ const RestaurantDetails = props => {
       />
       <View style={styles.actions}>
         <Button
+          style={styles.button}
           title="Check our Map!"
-          color={Colors.color3}
           onPress={pickOnMapHandler}
         >
         </Button>
       </View>
     </View>
+    </LinearGradient>
   );
 }
 
@@ -57,17 +62,36 @@ RestaurantDetails.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
+  screen: {
+    // flex: 1,
+    // height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  restaurantInfo: {
+    margin: 10,
+    height: '35%',
+    width: '90%',
+    backgroundColor: 'white',
+  },
+  detail: {
+    font: 'open-sans',
+    fontSize: 20,
+    paddingHorizontal: 5,
+  },
   mapPreview: {
+    marginTop: 20,
     marginBottom: 10,
     width: '100%',
-    height: 300,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    height: 250,
   },
   actions: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+  },
+  button: {
+    fontSize: 30,
   }
 });
 
