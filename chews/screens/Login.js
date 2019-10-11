@@ -6,15 +6,34 @@ import {
   View,
   Platform,
   TextInput,
+  Alert
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../constants/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import axios from 'axios';
 
 const Login = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
+  const handleLogin = () => {
+    axios.post('http://localhost:5433/login', {
+        username: username,
+        password: password
+    }).then(response => {
+        console.log(response.data)
+        if(response.data){
+          props.navigation.replace('AddressSelect')
+        } else {
+          console.log ('No good!')
+          Alert.alert(
+            'Please enter a valid username and password.', 
+          )
+        }
+    })
+  }
+
   return (
     <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
@@ -54,7 +73,7 @@ const Login = props => {
       <Button 
         title="Log me in!"
         onPress={() => {
-          props.navigation.replace('AddressSelect')
+          handleLogin()
         }}
       />
       <Text>Not yet signed up?</Text>
@@ -62,6 +81,7 @@ const Login = props => {
         style={styles.button} 
         title="Signup"
         onPress={() => {
+          handleLogin()
           props.navigation.replace('Signup')
         }}
       />
@@ -83,12 +103,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 40,
   },
   inputContainer: {
     flex: 1,
     width: '80%',
-    marginVertical: 125,
+    maxHeight: 250,
+    marginTop: 100,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',

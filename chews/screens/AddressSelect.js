@@ -8,29 +8,16 @@ import {
   TextInput,
 } from 'react-native';
 import Header from '../components/Header';
-import { API_KEY } from 'react-native-dotenv'
-import { useDispatch } from 'react-redux';
-import { addPlace } from '../store/places-actions';
+import { API_KEY2 } from 'react-native-dotenv'
 import { LinearGradient } from 'expo-linear-gradient';
 
 const AddressSelect = props => {
   const [yourAddress, setYourAddress] = useState('');
   const [yourCity, setYourCity] = useState('');
   const [yourState, setYourState] = useState('');
-  
+
   const [lat, setLat] = useState('');
   const [lng, setLng] = useState('')
- 
-  // const dispatch = useDispatch();
-
-  // const getLocation = () => {
-  //   dispatchLocation()
-  //   console.log(coord)
-  //   props.navigation.replace({
-  //     routeName: 'Restaurants', 
-  //     params: {coord: coord}
-  //   })
-  // }
 
   const dispatchLocation = () => {
     yourAddress.trim().replace(' ', '+');
@@ -46,6 +33,7 @@ const AddressSelect = props => {
         .then(response => response.json())
         .then(data => {
               const latitude = data.results[0].geometry.location.lat;
+              console.log(latitude)
               setLat(latitude)
               const longitude = data.results[0].geometry.location.lng;
               setLng(longitude)
@@ -61,7 +49,7 @@ const AddressSelect = props => {
   return (
     <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
     <View style={styles.screen}>
-      <Header title={'Chews'}/>
+      <Header />
       <View style={styles.locationContainer}>
         <Text style={styles.label}>Enter your location:</Text>
         <View style={styles.anInput}>
@@ -89,9 +77,8 @@ const AddressSelect = props => {
           </View>
         </View>
       </View>
-      
       <Button 
-        style={styles.button} 
+        style={styles.aButton} 
         title="Find Restaurants!"
         onPress={dispatchLocation}
       />
@@ -113,13 +100,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 40,
   },
   locationContainer: {
     flex: 1,
     width: '80%',
-    marginTop: 40,
-    marginBottom: 240,
+    marginTop: 50,
+    maxHeight: 250,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
@@ -165,7 +153,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  button: {
+  aButton: {
     fontSize: 30,
   }
 });

@@ -63,8 +63,6 @@ RestaurantDetails.navigationOptions = {
 
 const styles = StyleSheet.create({
   screen: {
-    // flex: 1,
-    // height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -73,6 +71,10 @@ const styles = StyleSheet.create({
     height: '35%',
     width: '90%',
     backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 10,
   },
   detail: {
     font: 'open-sans',
@@ -84,6 +86,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '100%',
     height: 250,
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 10,
   },
   actions: {
     flexDirection: 'row',

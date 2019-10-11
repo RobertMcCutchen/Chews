@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const models = require('./models');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 //Signup
 app.post('/signup', (req,res) => {
@@ -13,14 +14,16 @@ app.post('/signup', (req,res) => {
     console.log(username)
     console.log(password)
     //Create the user instance 
-    let user = models.User.build({
-        username: username,
-        password: password,  
-    })
-
-    // save the user instance/object to the database 
-    user.save().then(savedUser => res.json(savedUser))
-    .catch(error => console.log(error))    
+    bcrypt.hash(password, 10).then(function(hash) {
+        let user = models.User.build({
+            username: username,
+            password: hash,  
+        })
+    
+        // save the user instance/object to the database 
+        user.save().then(savedUser => res.json(savedUser))
+        .catch(error => console.log(error))
+    })    
 })
 
 // Login
@@ -35,17 +38,18 @@ app.post('/login', async (req,res) => {
     if(user) {
         bcrypt.compare(password, user.password, (error, result) => {
             if(result) {
-                res.send({message: "user found!"})
+                res.send(true)
             } else {
                 console.log('No result')
-                res.send({"Password is incorrect!"})
+                res.send(false)
             }
         })
     } else {
         console.log('No user')
+        res.send(false)
     }
 })
 
-app.listen(5432, () => {
+app.listen(5433, () => {
     console.log('Server is running...')
 })

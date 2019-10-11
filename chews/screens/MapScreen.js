@@ -11,11 +11,19 @@ const MapScreen = props => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     };
+
+    const markerCoordinates = {
+        latitude: data.coordinates.latitude,
+        longitude: data.coordinates.longitude,
+    }
+
+    console.log(markerCoordinates)
+
     return <MapView 
         style={styles.map} 
         region={mapRegion}
     >
-        <Marker></Marker>
+        <Marker title="Selected Restaurant" coordinate={markerCoordinates}></Marker>
     </MapView>
 };
 

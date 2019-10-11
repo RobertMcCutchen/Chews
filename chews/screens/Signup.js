@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import { 
-  Button, 
   StyleSheet, 
   Text, 
   View,
   Platform,
   TextInput,
+  Alert,
+  Button
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../constants/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import axios from 'axios';
 
 const Signup = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSignup = () => {
+    if(username.length > 5 && password.length > 5) {
+      console.log(username)
+      axios.post('http://localhost:5433/signup', {
+          username: username,
+          password: password
+      }).then(response => {
+          console.log(response.data)
+          props.navigation.replace('AddressSelect')
+      })
+    } else {
+      Alert.alert(
+        'Your username and password must be at least five characters long.', 
+      )
+    }
+  }
 
   return (
     <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
@@ -30,15 +49,30 @@ const Signup = props => {
         <View style={styles.anInput}>
           <Text style={styles.label}>Password</Text>
           <TextInput
+            id="password"
+            label="Password"
             style={styles.input}
+            secureTextEntry
+            required
+            minLength={5}
+            autoCapitalize="none"
+            keyboardType="default"
+            errorText="Please enter a valid password."
+            initialValue=""
             onChangeText={text => setPassword(text)}
           />
         </View>
       </View>
-      <Button title="Sign me up!"/>
+      <Button
+        title="Sign me up!"
+        onPress={() => {
+          handleSignup()
+        }}
+      />
       <Text>Already signed up?</Text>
       <Button
         title="Login"
+        titleStyle={{fontSize: 100}}
         onPress={() => {
           props.navigation.replace('Login')
         }}
@@ -61,12 +95,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 40,
   },
   inputContainer: {
     flex: 1,
     width: '80%',
-    marginVertical: 125,
+    marginTop: 100,
+    maxHeight: 250,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
