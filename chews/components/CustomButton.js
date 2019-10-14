@@ -1,40 +1,37 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Colors from '../constants/Colors';
 
-export default class CustomButton extends Component {
-  render(){
-    return (
-      <View style={styles.container}>
-
-        /* Custom Button */
-        <TouchableOpacity
-          style={styles.customBtnBG}
-          onPress={() => {}} 
-        >
-          <Text style={styles.customBtnText}>Button</Text>
-        </TouchableOpacity>
-
+const CustomButton = props => {
+  return (
+    <TouchableOpacity activeOpacity={0.8} onPress={props.onPress}>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>{props.children}</Text>
       </View>
-    )
-  }
-}
-
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-    customBtnText: {
-        fontSize: 40,
-        fontWeight: '400',
-        color: "blue",
-    },
-    customBtnBG: {
-    backgroundColor: "#007aff",
-    paddingHorizontal: 30,
-    paddingVertical: 5,
-    borderRadius: 30
-    }
+  button: {
+    minWidth: 150,
+    backgroundColor: 'aquamarine',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 10,
+    elevation: 3,
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'indigo',
+    fontFamily: 'open-sans',
+    fontSize: 20,
+    textAlign: 'center'
+  }
 });
+
+export default CustomButton;

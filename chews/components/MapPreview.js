@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     },
     mapImage: {
         width: '90%',
-        height: '100%',
+        height: '90%',
     },
 })
 

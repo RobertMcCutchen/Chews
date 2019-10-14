@@ -3,9 +3,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import Header from '../components/Header';
 import MapPreview from '../components/MapPreview';
 import Colors from '../constants/Colors';
-import ActivityIndicator from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-
+import CustomButton from '../components/CustomButton';
 
 const RestaurantDetails = props => {
   const data = props.navigation.getParam('data');
@@ -41,12 +40,12 @@ const RestaurantDetails = props => {
         onPress={pickOnMapHandler}
       />
       <View style={styles.actions}>
-        <Button
+        <CustomButton
           style={styles.button}
-          title="Check our Map!"
           onPress={pickOnMapHandler}
         >
-        </Button>
+          Check our Map!
+        </CustomButton>
       </View>
     </View>
     </LinearGradient>
@@ -82,7 +81,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   mapPreview: {
-    marginTop: 20,
     marginBottom: 10,
     width: '100%',
     height: 250,
@@ -96,9 +94,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
   },
-  button: {
-    fontSize: 30,
-  }
 });
 
 export default RestaurantDetails;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Button, 
   StyleSheet, 
   Text, 
   View,
@@ -10,6 +9,7 @@ import {
 import Header from '../components/Header';
 import { API_KEY2 } from 'react-native-dotenv'
 import { LinearGradient } from 'expo-linear-gradient';
+import CustomButton from '../components/CustomButton';
 
 const AddressSelect = props => {
   const [yourAddress, setYourAddress] = useState('');
@@ -77,11 +77,11 @@ const AddressSelect = props => {
           </View>
         </View>
       </View>
-      <Button 
-        style={styles.aButton} 
-        title="Find Restaurants!"
+      <CustomButton 
         onPress={dispatchLocation}
-      />
+      >
+        Find Restaurants!
+      </CustomButton>
     </View>
     </LinearGradient>
   );
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '80%',
     marginTop: 50,
-    maxHeight: 250,
+    maxHeight: 200,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
@@ -153,9 +153,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  aButton: {
-    fontSize: 30,
-  }
 });
 
 export default AddressSelect;

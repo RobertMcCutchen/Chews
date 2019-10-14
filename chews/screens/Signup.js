@@ -6,12 +6,12 @@ import {
   Platform,
   TextInput,
   Alert,
-  Button
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../constants/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
+import CustomButton from '../components/CustomButton';
 
 const Signup = props => {
   const [username, setUsername] = useState('');
@@ -63,20 +63,19 @@ const Signup = props => {
           />
         </View>
       </View>
-      <Button
-        title="Sign me up!"
+      <CustomButton
         onPress={() => {
           handleSignup()
-        }}
-      />
+        }}>
+        Sign me up!
+      </CustomButton>
       <Text>Already signed up?</Text>
-      <Button
-        title="Login"
-        titleStyle={{fontSize: 100}}
+      <CustomButton
         onPress={() => {
           props.navigation.replace('Login')
-        }}
-      />
+        }}>
+        Login
+      </CustomButton>
     </View>
     </LinearGradient>
   );
@@ -101,8 +100,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     width: '80%',
-    marginTop: 100,
-    maxHeight: 250,
+    marginTop: 60,
+    maxHeight: 200,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
 
 const CuisineGridTile = props => {
     
@@ -28,7 +29,10 @@ const CuisineGridTile = props => {
                     <ImageBackground 
                         source={{uri: props.imageURL}}
                         style={styles.cuisineImage}
-                    >
+                    >   
+                        <Text>
+                            <Ionicons ios="ios-heart" android="md-heart" size={15} color="gray"/>
+                        </Text>
                         <View style={styles.titleContainer}>
                             <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
                         </View>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Button, 
   StyleSheet, 
   Text, 
   View,
@@ -12,6 +11,7 @@ import Header from '../components/Header';
 import Colors from '../constants/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
+import CustomButton from '../components/CustomButton';
 
 const Login = props => {
   const [username, setUsername] = useState('');
@@ -70,21 +70,20 @@ const Login = props => {
           />
         </View>
       </View>
-      <Button 
-        title="Log me in!"
+      <CustomButton 
         onPress={() => {
           handleLogin()
-        }}
-      />
+        }}>
+        Log me in!
+      </CustomButton>
       <Text>Not yet signed up?</Text>
-      <Button
-        style={styles.button} 
-        title="Signup"
+      <CustomButton
         onPress={() => {
           handleLogin()
           props.navigation.replace('Signup')
-        }}
-      />
+        }}>
+        Signup
+      </CustomButton>
     </View>
     </LinearGradient>
   );
@@ -109,8 +108,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     width: '80%',
-    maxHeight: 250,
-    marginTop: 100,
+    maxHeight: 200,
+    marginTop: 60,
     borderRadius: 5,
     backgroundColor: Colors.color2,
     shadowColor: 'black',
