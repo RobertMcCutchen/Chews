@@ -38,6 +38,7 @@ app.post('/login', async (req,res) => {
     if(user) {
         bcrypt.compare(password, user.password, (error, result) => {
             if(result) {
+                console.log(user.id)
                 res.send(true)
             } else {
                 console.log('No result')
@@ -48,6 +49,35 @@ app.post('/login', async (req,res) => {
         console.log('No user')
         res.send(false)
     }
+})
+
+//Favorite
+app.post('/favorite', (req,res) => {
+    let name = body.data.name
+    let phoneNumber = body.data.phone
+    let price = body.data.price
+    let stars = body.data.rating
+    let category = body.data.catagories
+    let distance = Math.round((body.data.distance)/1609.33)
+    let address = body.data.location.display_address
+    let latitude = body.data.coordinates.latitude
+    let longitude = body.data.coordinates.longitude
+    
+    let favorite = models.Favorite.build({
+        name: name,
+        phoneNumber: phoneNumber,
+        price: price,
+        stars: stars,
+        category: category,
+        distance: distance,
+        address: address,
+        latitude: latitude,
+        longitude: longitude,  
+    })
+
+    // save the favorite instance/object to the database 
+    favorite.save().then(savedFavorite => res.json(savedFavorite))
+    .catch(error => console.log(error))
 })
 
 app.listen(5433, () => {

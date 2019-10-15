@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
   locationContainer: {
     flex: 1,
     width: '80%',
-    marginTop: 50,
     maxHeight: 200,
     borderRadius: 5,
     backgroundColor: Colors.color2,
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
   input: {
     width: '90%',
     backgroundColor: 'white',
-    fontSize: 25,
+    fontSize: 30,
     borderRadius: 5,
     paddingHorizontal: 10,
   },
