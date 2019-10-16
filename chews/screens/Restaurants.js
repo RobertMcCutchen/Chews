@@ -39,8 +39,8 @@ const Restaurants = props => {
  
   return (
       <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
+      <Header />
       <View style={styles.container}>
-        <Header title={'Chews'} />
       <FlatList 
         keyExtractor={(item, index) => item.id}
         data={CATEGORIES}

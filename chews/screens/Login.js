@@ -36,8 +36,8 @@ const Login = props => {
 
   return (
     <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
+    <Header />
     <View style={styles.screen}>
-      <Header />
       <View style={styles.inputContainer}>
         <View style={styles.anInput}>
           <Text style={styles.label}>Username</Text>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     paddingBottom: 40,
   },
   inputContainer: {

@@ -5,9 +5,9 @@ import {
   View,
   Platform,
   TextInput,
+  Alert,
 } from 'react-native';
 import Header from '../components/Header';
-import { API_KEY2 } from 'react-native-dotenv'
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomButton from '../components/CustomButton';
 
@@ -20,13 +20,12 @@ const AddressSelect = props => {
   const [lng, setLng] = useState('')
 
   const dispatchLocation = () => {
+    if(yourAddress.length > 0 && yourCity.length > 0 && yourState.length === 2) {
     yourAddress.trim().replace(' ', '+');
     yourCity.trim().replace(' ', '+');
     yourState.trim().toUpperCase();
     url = `https://maps.googleapis.com/maps/api/geocode/json?address=${yourAddress},
     +${yourCity},+${yourState}&key=AIzaSyD5Hk4s6zbTgXLPC-UYMLRmLFrxqJy0MGY`;
-
-    console.log(url)
 
     return (
         fetch(url)
@@ -44,12 +43,13 @@ const AddressSelect = props => {
         })
      
     )
-  }  
-
+  } else {
+    Alert.alert('Please enter a valid address.')
+  }} 
   return (
     <LinearGradient colors={['violet', 'orange']} style={styles.gradient}>
+    <Header />
     <View style={styles.screen}>
-      <Header />
       <View style={styles.locationContainer}>
         <Text style={styles.label}>Enter your location:</Text>
         <View style={styles.anInput}>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     paddingBottom: 40,
   },
   locationContainer: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 10,
     elevation: 3,
-    padding: 2,
+    padding: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
   },
