@@ -46,6 +46,7 @@ const Login = props => {
             label="Username"
             style={styles.input}
             required
+            minLength={5}
             autoCapitalize="none"
             keyboardType="default"
             errorText="Please enter a valid username."
